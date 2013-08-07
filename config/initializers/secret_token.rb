@@ -9,4 +9,18 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-FMF::Application.config.secret_key_base = '6709c8d4cdd506bcd2fa246bf79261796daae52bed88a2dac0c0a934e61c4500443370137a152d6a085fb4fdda8d2a0c9e52623e9be6d7109b377cca9b07d271'
+require 'securerandom'
+
+def secure_token
+  token_file = Rails.root.join('.secret')
+  if File.exist?(token_file)
+    # Use the existing token.
+    File.read(token_file).chomp
+  else
+    # Generate a new token and store it in token_file.
+    token = SecureRandom.hex(64)
+    File.write(token_file, token)
+    token
+  end
+end
+FMF::Application.config.secret_key_base = secure_token
