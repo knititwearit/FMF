@@ -42,6 +42,10 @@ gem 'will_paginate', '3.0.4'
 
 gem 'bootstrap-will_paginate', '0.0.9'
 
+# QR Code Generator
+gem "rqrcode", '~> 0.4.2'
+gem 'mini_magick'
+
 # Use unicorn as the app server
 # gem 'unicorn'
 
