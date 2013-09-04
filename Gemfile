@@ -46,6 +46,9 @@ gem 'bootstrap-will_paginate', '0.0.9'
 gem "rqrcode", '~> 0.4.2'
 gem 'mini_magick'
 
+# Fonts
+
+
 # Use unicorn as the app server
 # gem 'unicorn'
 
