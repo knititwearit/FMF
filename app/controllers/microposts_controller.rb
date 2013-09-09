@@ -6,7 +6,7 @@ class MicropostsController < ApplicationController
   def index
     @microposts = Micropost.all
   end
-
+  
   # GET /microposts/1
   # GET /microposts/1.json
   def show

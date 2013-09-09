@@ -6,10 +6,11 @@ class UsersController < ApplicationController
   def index
     @users = User.paginate(page: params[:page])
   end
-
+  
   def show
-    @qr = RQRCode::QRCode.new( 'knititwearit@gmail.com', :size => 4, :level => :h )
     @user = User.find(params[:id])
+    @qr = RQRCode::QRCode.new( 'knititwearit@gmail.com', :size => 4, :level => :h )
+    @microposts = @user.microposts.paginate(page: params[:page])
   end
 
   def new
