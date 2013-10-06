@@ -46,6 +46,13 @@ gem 'bootstrap-will_paginate', '0.0.9'
 gem "rqrcode", '~> 0.4.2'
 gem 'mini_magick'
 
+# 3rd Party Authentication
+gem 'omniauth'
+
+# Search
+gem 'sunspot_rails'
+gem 'sunspot_solr'
+
 # Fonts
 
 

@@ -4,14 +4,23 @@ class UsersController < ApplicationController
   before_action :correct_user,   only: [:edit, :update]
   before_action :admin_user,     only: :destroy
 
-  def index
-    @users = User.paginate(page: params[:page])
-  end
   
+  def index
+    @search = User.search do
+      fulltext params[:search]
+    end
+    @users = @search.results
+  end
+   
   def show
     @user = User.find(params[:id])
     @qr = RQRCode::QRCode.new( 'knititwearit@gmail.com', :size => 4, :level => :h )
     @microposts = @user.microposts.paginate(page: params[:page])
+         if params[:search]
+             search_param = CGI::escapeHTML(params[:search])   
+             redirect_to ("/users?search=#{search_param}&commit=Search") 
+           return
+         end
   end
 
   def new
@@ -31,6 +40,11 @@ class UsersController < ApplicationController
   
   def edit
     @user = User.find(params[:id])
+         if params[:search]
+             search_param = CGI::escapeHTML(params[:search])   
+             redirect_to ("/users?search=#{search_param}&commit=Search") 
+           return
+         end
   end
 
   def update
