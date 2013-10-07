@@ -11,10 +11,14 @@ class UsersController < ApplicationController
     end
     @users = @search.results
   end
+ 
    
   def show
     @user = User.find(params[:id])
+   
     @qr = RQRCode::QRCode.new( 'knititwearit@gmail.com', :size => 4, :level => :h )
+
+    
     @microposts = @user.microposts.paginate(page: params[:page])
          if params[:search]
              search_param = CGI::escapeHTML(params[:search])   
@@ -22,7 +26,8 @@ class UsersController < ApplicationController
            return
          end
   end
-
+  
+  
   def new
     @user = User.new
   end
