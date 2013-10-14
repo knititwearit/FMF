@@ -33,6 +33,7 @@ GEM
     bootstrap-will_paginate (0.0.9)
       will_paginate
     builder (3.1.4)
+    chunky_png (1.2.8)
     coffee-rails (4.0.0)
       coffee-script (>= 2.2.0)
       railties (>= 4.0.0.beta, < 5.0)
@@ -40,6 +41,9 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.6.3)
+    dragonfly (0.9.15)
+      multi_json (~> 1.0)
+      rack
     erubis (2.7.0)
     execjs (1.4.0)
       multi_json (~> 1.0)
@@ -70,6 +74,8 @@ GEM
     polyglot (0.3.3)
     pr_geohash (1.0.0)
     rack (1.5.2)
+    rack-cache (1.2)
+      rack (>= 0.4)
     rack-test (0.6.2)
       rack (>= 1.0)
     rails (4.0.0)
@@ -89,6 +95,9 @@ GEM
     rdoc (3.12.2)
       json (~> 1.4)
     rqrcode (0.4.2)
+    rqrcode_png (0.1.1)
+      chunky_png
+      rqrcode
     rsolr (1.0.9)
       builder (>= 2.1.2)
     sass (3.2.10)
@@ -140,12 +149,15 @@ DEPENDENCIES
   bootstrap-sass (= 2.3.2.0)
   bootstrap-will_paginate (= 0.0.9)
   coffee-rails (~> 4.0.0)
+  dragonfly (~> 0.9.15)
   jbuilder (~> 1.2)
   jquery-rails
   mini_magick
   omniauth
+  rack-cache
   rails (= 4.0.0)
   rqrcode (~> 0.4.2)
+  rqrcode_png
   sass-rails (~> 4.0.0)
   sdoc
   sqlite3

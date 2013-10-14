@@ -45,6 +45,9 @@ gem 'bootstrap-will_paginate', '0.0.9'
 # QR Code Generator
 gem "rqrcode", '~> 0.4.2'
 gem 'mini_magick'
+gem 'rqrcode_png'
+gem 'rack-cache', :require => 'rack/cache'
+gem 'dragonfly', '~>0.9.15'
 
 # 3rd Party Authentication
 gem 'omniauth'
