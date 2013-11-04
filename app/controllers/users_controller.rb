@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   before_action :admin_user,     only: :destroy
 
   require "rqrcode"
-require "chunky_png"
+  require "chunky_png"
   
   def index
     @search = User.search do
@@ -13,18 +13,24 @@ require "chunky_png"
     end
     @users = @search.results
   end
- 
-   
+
+  def correct_name
+    @name = User.find(params[:name])
+    end
+  
   def show
-    @user = User.find(params[:id])
-   
-    # qr_code_img = RQRCode::QRCode.new( 'MATMSG:TO:knititwearit@gmail.com;SUB:Hello;Body:example;;', :size => 8, :level => :h ).to_img
+    @user  = User.find(params[:id])
+    @name  = @user.name
+    @email = @user.email
     
-    # qr_code_img = RQRCode::QRCode.new( 'MATMSG:TO:knititwearit@gmail.com;SUB:Hello;Body:Join me http://fiveminutefriend-18901.euw1.actionbox.io:3000;;', :size => 12, :level => :h ).to_img
-    
-    # qr_code_img = RQRCode::QRCode.new( 'http://fiveminutefriend-18901.euw1.actionbox.io:3000/users/16', :size => 12, :level => :h ).to_img
-    
-    qr_code_img = RQRCode::QRCode.new( 'MECARD:N:Noah Coad;TEL:4258028842;EMAIL:noah@coad.net;ADR:1419 Comanche,Allen,TX,75013,;URL:http://fiveminutefriend-18901.euw1.actionbox.io:3000;', :size => 12, :level => :h ).to_img
+    mecard0 = 'MECARD'
+    mecard1 = ':N:'+@name
+    mecard2 = ';EMAIL:'+@email
+    mecardz = ';'''
+   # mecard3 = ';TEL:4258028842;EMAIL:noah@coad.net;ADR:1419 Comanche,Allen,TX,75013,;URL:http://fiveminutefriend-18901.euw1.actionbox.io:3000;'
+       
+    # qr_code_img = RQRCode::QRCode.new( 'MECARD:N:last_name_list;TEL:4258028842;EMAIL:noah@coad.net;ADR:1419 Comanche,Allen,TX,75013,;URL:http://fiveminutefriend-18901.euw1.actionbox.io:3000;', :size => 12, :level => :h ).to_img
+    qr_code_img = RQRCode::QRCode.new( mecard0 + mecard1 + mecard2 + mecardz, :size => 12, :level => :h ).to_img
     
     @qr = qr_code_img.to_image.resize(150,150).to_data_url 
     
