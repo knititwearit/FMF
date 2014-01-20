@@ -87,6 +87,11 @@ class UsersController < ApplicationController
     @title = "Following"
     @user = User.find(params[:id])
     @users = @user.followed_users.paginate(page: params[:page])
+        if params[:search]
+             search_param = CGI::escapeHTML(params[:search])   
+             redirect_to ("/users?search=#{search_param}&commit=Search") 
+           return
+         end
     render 'show_follow'
   end
 
@@ -94,6 +99,11 @@ class UsersController < ApplicationController
     @title = "Followers"
     @user = User.find(params[:id])
     @users = @user.followers.paginate(page: params[:page])
+        if params[:search]
+             search_param = CGI::escapeHTML(params[:search])   
+             redirect_to ("/users?search=#{search_param}&commit=Search") 
+           return
+         end
     render 'show_follow'
   end
   
