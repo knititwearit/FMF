@@ -3,6 +3,7 @@
   <aside class="span4">
     <section>
       <%= gravatar_for @user %>
+      <%= cl_image_tag("http://res.cloudinary.com/fmf/image/upload/v1392560630/kd9lyjkwmyqzhgwzhldo.png") %>
       <h1><%= @user.name %></h1>
       <span><%= link_to "view my profile", @user %></span>
       <span><b>Microposts:</b> <%= @user.microposts.count %></span>

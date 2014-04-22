@@ -7,15 +7,15 @@ class User < ActiveRecord::Base
                                    dependent:   :destroy
   has_many :followers, through: :reverse_relationships, source: :follower
   
-  before_save { self.email = email.downcase }
+  # before_save { self.email = email.downcase }
   before_create :create_remember_token
   
-  validates :name, presence: true, length: { maximum: 50 }
-   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
-  validates :email, presence: true, format: { with: VALID_EMAIL_REGEX },
-                    uniqueness: { case_sensitive: false }
-  has_secure_password
-  validates :password, length: { minimum: 6 }
+  #validates :name, presence: true, length: { maximum: 50 }
+  #VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
+  #validates :email, presence: true, format: { with: VALID_EMAIL_REGEX },
+  #                  uniqueness: { case_sensitive: false }
+  #has_secure_password
+  #validates :password, length: { minimum: 6 }
   
   
   searchable do
@@ -44,6 +44,18 @@ class User < ActiveRecord::Base
   
   def unfollow!(other_user)
     relationships.find_by(followed_id: other_user.id).destroy!
+  end
+  
+    def self.from_omniauth(auth)
+    find_by_provider_and_uid(auth["provider"], auth["uid"]) || create_with_omniauth(auth)
+  end
+
+  def self.create_with_omniauth(auth)
+    create! do |user|
+      user.provider = auth["provider"]
+      user.uid = auth["uid"]
+      user.name = auth["info"]["name"]
+    end
   end
   
   private

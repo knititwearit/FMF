@@ -49,15 +49,27 @@ gem 'rqrcode_png'
 gem 'rack-cache', :require => 'rack/cache'
 gem 'dragonfly', '~>0.9.15'
 
-# 3rd Party Authentication
-gem 'omniauth'
 
 # Search
 gem 'sunspot_rails'
 gem 'sunspot_solr'
 
-# Fonts
+# Carrierwave file upload facility
+gem "carrierwave" 
 
+# Image Storage Management System
+gem 'cloudinary'
+
+# Jquery file upload
+gem 'jquery-fileupload-rails'
+
+# 3rd Party Authentication
+gem "omniauth"
+gem 'omniauth-facebook'
+gem 'omniauth-identity'
+
+# Fonts
+gem 'bootstrap-glyphicons'
 
 # Use unicorn as the app server
 # gem 'unicorn'

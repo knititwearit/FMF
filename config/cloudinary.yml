@@ -1,0 +1,19 @@
+---
+development:
+  cloud_name: fmf
+  api_key: '972234612725242'
+  api_secret: Pc5XJbpInSaFEzACiwlmDJVHobk
+  enhance_image_tag: true
+  static_image_support: false
+production:
+  cloud_name: fmf
+  api_key: '972234612725242'
+  api_secret: Pc5XJbpInSaFEzACiwlmDJVHobk
+  enhance_image_tag: true
+  static_image_support: true
+test:
+  cloud_name: fmf
+  api_key: '972234612725242'
+  api_secret: Pc5XJbpInSaFEzACiwlmDJVHobk
+  enhance_image_tag: true
+  static_image_support: false
