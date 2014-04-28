@@ -7,7 +7,7 @@
     <div id="error_explanation">
         <div class="alert alert-error">
          
-          The form contains <%= pluralize(@identity.errors.count, "error") %>.
+          <%= pluralize(@identity.errors.count, "error") %> prohibited this account from being created:
           </div>
       <div class="input">
           <ul>

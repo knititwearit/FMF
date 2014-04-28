@@ -21,8 +21,14 @@ class UsersController < ApplicationController
   def show
     @user  = User.find(params[:id])
     @name  = @user.name
-    @email = @user.email
-    
+    ##
+    @uid   = @user.uid
+    @identity = Identity.find_by_id!(@user.uid)
+    ##
+    @email = @identity.email
+    #@user_uid  = @user.uid
+   
+
     mecard0 = 'MECARD'
     mecard1 = ':N:'+@name
     mecard2 = ';EMAIL:'+@email

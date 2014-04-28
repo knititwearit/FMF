@@ -5,8 +5,16 @@ FMF::Application.routes.draw do
   get "static_pages/about"
   get "static_pages/contact"
   
-  resources :identities do
+  resources :identities, :users do
+    member do
+      get :following, :followers
+    end
   end
+  
+  resources :sessions,      only: [:new, :create, :destroy]
+  resources :microposts,    only: [:create, :destroy]
+  resources :relationships, only: [:create, :destroy]
+  
   #root to: "sessions#new" 
   root  'static_pages#home'
   match 'auth/:provider/callback', to: 'sessions#create', via: [:get, :post]

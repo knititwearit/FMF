@@ -1,9 +1,11 @@
 class IdentitiesController < ApplicationController
-  def new
-    @identity = env['omniauth.identity']
+  def show
+    @identity = Identity.find(params[:id])
+    @name  = @identity.name
+    @email = @identity.email
   end
   
-  def show
-    @identity  = Identity.find(params[:id])
+  def new
+    @identity = env['omniauth.identity']
   end
 end
