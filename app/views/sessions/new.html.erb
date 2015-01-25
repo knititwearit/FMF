@@ -1,4 +1,19 @@
-<p>
-  <strong>Don&rsquo;t use these services?</strong>
-  <%= link_to "Create an account", new_identity_path %> or login below.
-</p>
+<% provide(:title, "Sign in") %>
+<h1>Sign in</h1>
+
+<div class="row">
+  <div class="span6 offset3">
+    <%=  form_tag "/auth/identity/callback" do |f| %>
+
+      <%= label_tag :auth_key, "Email"%> 
+      <%= text_field_tag :auth_key %> 
+
+      <%= label_tag :password %>
+      <%= password_field_tag :password %>
+
+      <%= submit_tag "Sign in", class: "btn btn-large btn-primary" %>
+    <% end %>
+
+    <p>New user? <%= link_to "Sign up now!", signup_path %></p>
+  </div>
+</div>

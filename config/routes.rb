@@ -19,7 +19,8 @@ FMF::Application.routes.draw do
   root  'static_pages#home'
   match 'auth/:provider/callback', to: 'sessions#create', via: [:get, :post]
   match 'auth/failure', to: redirect('/'), via: [:get, :post]
-  match 'signout', to: 'sessions#destroy', as: 'signout', via: [:get, :post]
+ # match 'signout', to: 'sessions#destroy', as: 'signout', via: [:get, :post]
+  match '/signout', to: 'sessions#destroy',     via: 'delete'
   match '/signin',  to: 'sessions#new',         via: 'get'
   match '/signup',  to: 'identities#new',       via: 'get'
   match '/help',    to: 'static_pages#help',    via: 'get'
