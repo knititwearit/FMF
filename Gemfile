@@ -71,6 +71,9 @@ gem 'omniauth-identity'
 # Fonts
 gem 'bootstrap-glyphicons'
 
+# Apple Passbook
+gem 'passbook'
+
 # Use unicorn as the app server
 # gem 'unicorn'
 
